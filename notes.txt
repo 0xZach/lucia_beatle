@@ -8,3 +8,12 @@ https://www.freecodecamp.org/news/how-to-hash-passwords-with-bcrypt-in-nodejs/
 https://www.youtube.com/watch?v=01LDKxriI04 # How to confirgure Drizzle ORM with Better-sqlite3
 
 
+Packages used so far:
+lucia (duh)
+typescript
+react
+next
+eslint
+adapter-drizzle
+better-sqlite3
+bcrypt
