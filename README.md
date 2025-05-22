@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Small side project to test the Lucia package on a Next.js architecture.
 
-## Getting Started
+### Requirements:
 
-First, run the development server:
+- React
+- Nextjs
+- Turbopack
+- Typescript
+- Eslint
+- Lucia
+- Drizzle adapter
+- better-sqlite3
+- bcrypt (Argon2 doesn't work with Turbopack)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### TODO:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Setup db: 80% done (good to go, just gonna update later from text id to auto increment int)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Setup nextjs architecture: 20% done
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Signup route: 50% done
 
-## Learn More
+- Login route: 0% done
 
-To learn more about Next.js, take a look at the following resources:
+- Resetting password route: 0% done
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Switch from direct db calls to Api calls: 0% done
