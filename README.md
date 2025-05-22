@@ -25,3 +25,7 @@ Small side project to test the Lucia package on a Next.js architecture.
 - Resetting password route: 0% done
 
 - Switch from direct db calls to Api calls: 0% done
+
+
+
+(if you understand the reference in the project title you get this cookie 🍪)
