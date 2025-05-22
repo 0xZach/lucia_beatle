@@ -1,6 +1,12 @@
-Small side project to test the Lucia package on a Next.js architecture.
+# Documentation for LuciaBeatle
 
-### Requirements:
+### Introduction
+
+Small side project to test the Lucia package on a Next.js architecture. 
+The goal is to see if it can be better than Next-auth for future authentication implementations.
+
+
+### Requirements
 
 - React
 - Nextjs
@@ -12,7 +18,8 @@ Small side project to test the Lucia package on a Next.js architecture.
 - better-sqlite3
 - bcrypt (Argon2 doesn't work with Turbopack)
 
-### TODO:
+
+### TO-DO list
 
 - Setup db: 80% done (good to go, just gonna update later from text id to auto increment int)
 
@@ -28,4 +35,6 @@ Small side project to test the Lucia package on a Next.js architecture.
 
 
 
-(if you understand the reference in the project title you get this cookie 🍪)
+
+
+<sub>_(if you understand the reference in the project title you get this cookie 🍪)_</sub>
