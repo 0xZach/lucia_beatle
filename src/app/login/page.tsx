@@ -1,12 +1,18 @@
+'use client';
+
 import { login } from "../actions";
-import React from "react";
+import React, { useActionState } from "react";
 import RootLayout from "../layout";
 
-async function LoginPage() {
+const LoginPage = () => {
+    const initialState = {
+        error: ''
+    };
+    const [formState, formAction] = useActionState(login, initialState);
     return (
         <RootLayout>
             <h1>Sign in</h1>
-            <form action={login}>
+            <form action={formAction}>
                 <label htmlFor="username">Username</label>
                 <input name="username" id="username" />
                 <br />
@@ -14,6 +20,9 @@ async function LoginPage() {
                 <input type="password" name="password" id="password" />
                 <br />
                 <button>Continue</button>
+                {formState?.error &&
+                    <p>{formState.error}</p>
+                }
             </form>
         </RootLayout>
     );

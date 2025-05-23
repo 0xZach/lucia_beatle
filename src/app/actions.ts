@@ -10,7 +10,7 @@ import { userTable } from "@/db/schema";
 import { eq } from "drizzle-orm";
 
 
-export async function signup(formData: FormData) {
+export async function signup(currentState: { error: string }, formData: FormData) {
     const username = formData.get("username");
     // username must be between 4 ~ 31 characters, and only consists of lowercase letters, 0-9, -, and _
     // keep in mind some database (e.g. mysql) are case insensitive
@@ -51,7 +51,7 @@ export async function signup(formData: FormData) {
 }
 
 
-export async function login(formData: FormData) {
+export async function login(currentState: { error: string }, formData: FormData) {
     const username = formData.get("username");
     if (
         typeof username !== "string" ||
