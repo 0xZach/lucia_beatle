@@ -21,17 +21,19 @@ The goal is to see if it can be better than Next-auth for future authentication 
 
 ### TO-DO list
 
-- Setup db: 80% done (good to go, just gonna update later from text id to auto increment int)
+- Setup db: 100% done (session and user are working as intended now)
 
-- Setup nextjs architecture: 20% done
+- Setup nextjs architecture: 30% done (this will stay undone for a while)
 
-- Signup route: 50% done
+- Signup route: 80% done (need to find out how to apply error messages which are sent to the void for now)
 
-- Login route: 0% done
+- Login route: 80% done
+
+- Loggout route: 0% done
 
 - Resetting password route: 0% done
 
-- Switch from direct db calls to Api calls: 0% done
+- Switch from direct db calls to Api calls: 0% done (debating making a second project for that when i'm done)
 
 
 
