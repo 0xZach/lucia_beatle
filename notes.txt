@@ -6,7 +6,7 @@ https://orm.drizzle.team/docs/get-started-sqlite#better-sqlite3
 https://www.npmjs.com/package/bcrypt # using this instead of Argon2 because i use Turbopack, otherwise, just use the Lucia tutorial
 https://www.freecodecamp.org/news/how-to-hash-passwords-with-bcrypt-in-nodejs/
 https://www.youtube.com/watch?v=01LDKxriI04 # How to confirgure Drizzle ORM with Better-sqlite3
-
+https://www.youtube.com/watch?v=1cBhgW2vtZE # How to use error message in form
 
 Packages used so far:
 lucia (duh)
