@@ -1,7 +1,11 @@
-import { BetterSQLite3Database, drizzle } from 'drizzle-orm/better-sqlite3';
-import Database from 'better-sqlite3';
+import { drizzle } from 'drizzle-orm/better-sqlite3';
+import sqlite from 'better-sqlite3';
 
-const sqlite = new Database('sqlite.db');
-const db: BetterSQLite3Database = drizzle({ client: sqlite });
+const sqliteDB = sqlite("sqlite.db");
+export const db = drizzle(sqliteDB);
 
-export default db;
+export interface DatabaseUser {
+    id: string;
+    username: string;
+    password: string;
+};
