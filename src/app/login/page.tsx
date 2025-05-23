@@ -1,21 +1,22 @@
-import { signup } from "../actions";
+import { login } from "../actions";
 import React from "react";
 import RootLayout from "../layout";
 
-const SignupPage = () => {
+async function LoginPage() {
     return (
         <RootLayout>
-            <h1>Create an account</h1>
-            <form action={signup}>
+            <h1>Sign in</h1>
+            <form action={login}>
                 <label htmlFor="username">Username</label>
                 <input name="username" id="username" />
                 <br />
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" id="password" />
                 <br />
-                <button type="submit">Register </button>
+                <button>Continue</button>
             </form>
         </RootLayout>
     );
 }
-export default SignupPage;
+
+export default LoginPage; 
