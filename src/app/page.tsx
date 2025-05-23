@@ -1,10 +1,11 @@
 import React from 'react';
+import RootLayout from './layout';
 
 const Page = () => {
   return (
-    <div>
+    <RootLayout>
       <h1>Home</h1>
-    </div>
+    </RootLayout>
   );
 }
 
