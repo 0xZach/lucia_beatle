@@ -1,13 +1,12 @@
-import db from "../db";
+import { db } from "../db";
 import bcrypt from "bcrypt";
 import { cookies } from "next/headers";
 import { lucia } from "../lib/auth";
 import { redirect } from "next/navigation";
 import { generateIdFromEntropySize } from "lucia";
-//import { ActionResult } from "next/dist/server/app-render/types";
 import { userTable } from "../db/schema";
 
-export async function signup(formData: FormData): Promise<any> {
+export async function signup(formData: FormData): Promise<ActionResult> {
     "use server";
     const username = formData.get("username");
     // username must be between 4 ~ 31 characters, and only consists of lowercase letters, 0-9, -, and _
@@ -57,17 +56,12 @@ export async function signup(formData: FormData): Promise<any> {
     const hashed_pass = bcryptPassHash();
     const userId = generateIdFromEntropySize(10); // 16 characters long
 
-    try {
-        // TODO: check if username is already used
-        await db.insert(userTable).values({
-            id: userId,
-            username: username,
-            password_hash: hashed_pass
-        });
-
-    } catch (error) {
-        return error;
-    }
+    // TODO: check if username is already used
+    await db.insert(userTable).values({
+        id: userId,
+        username: username,
+        password_hash: hashed_pass
+    });
 
     const session = await lucia.createSession(userId, {});
     const sessionCookie = lucia.createSessionCookie(session.id);
@@ -76,3 +70,8 @@ export async function signup(formData: FormData): Promise<any> {
 
     return redirect("/");
 }
+
+interface ActionResult {
+    error: string;
+}
+
