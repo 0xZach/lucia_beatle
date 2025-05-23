@@ -13,7 +13,7 @@ const SignupPage = () => {
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" id="password" />
                 <br />
-                <button>Continue</button>
+                <button>Register </button>
             </form>
         </RootLayout>
     );
