@@ -42,7 +42,7 @@ The goal is to see if it can be better than Next-auth for future authentication 
 #### V3 (api based db):
 - api db setup: 0% done (will do it in a separate project link: _Coming soon_)
 
-- Switch from direct db calls to Api calls: 0% done (debating making a second project for that when i'm done)
+- Switch from direct db calls to Api calls: 0% done
 
 
 
