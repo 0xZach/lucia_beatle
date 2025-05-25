@@ -24,6 +24,7 @@ const LoginPage = () => {
                     <p>{formState.error}</p>
                 }
             </form>
+            <p>New user? </p><a href='/signup'>Create an account</a>
         </RootLayout>
     );
 }
