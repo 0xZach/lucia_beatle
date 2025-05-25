@@ -2,7 +2,8 @@ Sources:
 https://v3.lucia-auth.com/
 https://github.com/lucia-auth/examples/tree/main/nextjs-app/username-and-password
 https://www.youtube.com/watch?v=cCxobhR70vE # How To Setup Lucia uth in nextjs (in 87* minutes)
-https://orm.drizzle.team/docs/get-started-sqlite#better-sqlite3
+https://www.w3resource.com/sqlite/snippets/simplify-sqlite-with-drizzle-orm.php # setup db in sqlite3 
+(HUOM: drizzle doesn't support schema implementation for sqlite, so you have to use a db management tool to add the tables after creating the db)
 https://www.npmjs.com/package/bcrypt # using this instead of Argon2 because i use Turbopack, otherwise, just use the Lucia tutorial
 https://www.freecodecamp.org/news/how-to-hash-passwords-with-bcrypt-in-nodejs/
 https://www.youtube.com/watch?v=01LDKxriI04 # How to confirgure Drizzle ORM with Better-sqlite3
