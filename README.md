@@ -6,18 +6,9 @@ Small side project to test the Lucia package on a Next.js architecture.
 The goal is to see if it can be better than Next-auth for future authentication implementations.
 
 
-### Requirements
+### Installation
 
-- React
-- Nextjs
-- Turbopack
-- Typescript
-- Eslint
-- Lucia
-- Drizzle adapter
-- better-sqlite3
-- bcrypt (Argon2 doesn't work with Turbopack)
-
+[Installation guide](/doc/installation.md)
 
 ### TO-DO list
 
