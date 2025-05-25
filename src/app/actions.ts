@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 import { generateIdFromEntropySize } from "lucia";
 import { userTable } from "@/db/schema";
 import { eq } from "drizzle-orm";
+import { validateRequest } from "@/lib/validate-request";
 
 
 export async function signup(currentState: { error: string }, formData: FormData) {
@@ -96,6 +97,24 @@ export async function login(currentState: { error: string }, formData: FormData)
 
     const session = await lucia.createSession(existingUser.id, {});
     const sessionCookie = lucia.createSessionCookie(session.id);
+    const cookieStore = await cookies();
+    cookieStore.set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
+    return redirect("/");
+}
+
+
+export async function logout(currentState: { error: string }) {
+    "use server";
+    const { session } = await validateRequest();
+    if (!session) {
+        return {
+            error: "Unauthorized"
+        };
+    }
+
+    await lucia.invalidateSession(session.id);
+
+    const sessionCookie = lucia.createBlankSessionCookie();
     const cookieStore = await cookies();
     cookieStore.set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
     return redirect("/");
