@@ -1,6 +1,6 @@
 'use client';
 
-import { logout } from "../actions";
+import { oldLogout } from "../actions";
 import React, { useActionState } from "react";
 import RootLayout from "../layout";
 
@@ -8,7 +8,7 @@ const LogoutPage = () => {
     const initialState = {
         error: ''
     };
-    const [formState, formAction] = useActionState(logout, initialState);
+    const [formState, formAction] = useActionState(oldLogout, initialState);
     return (
         <RootLayout>
             {formState?.error &&
