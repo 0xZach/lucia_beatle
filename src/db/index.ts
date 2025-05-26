@@ -14,5 +14,11 @@ export const db = drizzle({
 export interface DatabaseUser {
     id: string;
     username: string;
-    password: string;
+    password_hash: string;
+};
+
+export interface Session {
+    id: string;
+    userId: string;
+    expiresAt: number;
 };
