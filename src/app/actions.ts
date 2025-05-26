@@ -9,6 +9,8 @@ import { generateIdFromEntropySize } from "lucia";
 import { userTable } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { validateRequest } from "@/lib/validate-request";
+import { createSession, generateSessionToken, invalidateSession } from "@/lib/luciaLess";
+import { deleteSessionTokenCookie, setSessionTokenCookie } from "@/lib/cookies";
 
 
 export async function signup(currentState: { error: string }, formData: FormData) {
@@ -43,10 +45,9 @@ export async function signup(currentState: { error: string }, formData: FormData
         password_hash: hash
     });
 
-    const session = await lucia.createSession(userId, {});
-    const sessionCookie = lucia.createSessionCookie(session.id);
-    const cookieStore = await cookies();
-    cookieStore.set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
+    const token = generateSessionToken();
+    const session = await createSession(token, userId);
+    await setSessionTokenCookie(token, session.expiresAt); // use token since session.id is only the hashed version
 
     return redirect("/");
 }
@@ -95,10 +96,9 @@ export async function login(currentState: { error: string }, formData: FormData)
         };
     }
 
-    const session = await lucia.createSession(existingUser.id, {});
-    const sessionCookie = lucia.createSessionCookie(session.id);
-    const cookieStore = await cookies();
-    cookieStore.set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
+    const token = generateSessionToken();
+    const session = await createSession(token, existingUser.id);
+    await setSessionTokenCookie(token, session.expiresAt);
     return redirect("/");
 }
 
@@ -110,11 +110,9 @@ export async function logout() {
         return redirect("/login");
     }
 
-    await lucia.invalidateSession(session.id);
+    await invalidateSession(session.id);
 
-    const sessionCookie = lucia.createBlankSessionCookie();
-    const cookieStore = await cookies();
-    cookieStore.set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
+    await deleteSessionTokenCookie();
     return redirect("/login");
 }
 
@@ -128,10 +126,8 @@ export async function oldLogout(currentState: { error: string }) {
         };
     }
 
-    await lucia.invalidateSession(session.id);
+    await invalidateSession(session.id);
 
-    const sessionCookie = lucia.createBlankSessionCookie();
-    const cookieStore = await cookies();
-    cookieStore.set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
+    await deleteSessionTokenCookie();
     return redirect("/");
 }
