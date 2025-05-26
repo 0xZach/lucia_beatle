@@ -1,13 +1,15 @@
 import { cookies } from "next/headers";
 import { cache } from "react";
 
-import type { Session, User } from "lucia";
-import { lucia } from "./auth";
+import type { Session, DatabaseUser } from "@/db";
+import { validateSessionToken } from "./auth";
+import { deleteSessionTokenCookie, setSessionTokenCookie } from "./cookies";
+
 
 export const validateRequest = cache(
-    async (): Promise<{ user: User; session: Session } | { user: null; session: null }> => {
+    async (): Promise<{ user: DatabaseUser; session: Session } | { user: null; session: null }> => {
         const cookieStore = await cookies();
-        const sessionId = cookieStore.get(lucia.sessionCookieName)?.value ?? null;
+        const sessionId = cookieStore.get("auth_session")?.value ?? null;
         if (!sessionId) {
             return {
                 user: null,
@@ -15,16 +17,14 @@ export const validateRequest = cache(
             };
         }
 
-        const result = await lucia.validateSession(sessionId);
+        const result = await validateSessionToken(sessionId);
         // next.js throws when you attempt to set cookie when rendering page
         try {
-            if (result.session && result.session.fresh) {
-                const sessionCookie = lucia.createSessionCookie(result.session.id);
-                cookieStore.set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
+            if (result.session) {
+                await setSessionTokenCookie(result.session.id, result.session.expiresAt);
             }
             if (!result.session) {
-                const sessionCookie = lucia.createBlankSessionCookie();
-                cookieStore.set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
+                await deleteSessionTokenCookie();
             }
         } catch { }
         return result;
