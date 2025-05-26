@@ -6,6 +6,13 @@ import { sha256 } from "@oslojs/crypto/sha2";
 
 import type { DatabaseUser, Session } from "@/db";
 
+
+export function generateIdFromEntropySize(size: number): string {
+	const buffer = crypto.getRandomValues(new Uint8Array(size));
+	return encodeBase32LowerCaseNoPadding(buffer);
+}
+
+
 export function generateSessionToken(): string {
 	const bytes = new Uint8Array(20);
 	crypto.getRandomValues(bytes);

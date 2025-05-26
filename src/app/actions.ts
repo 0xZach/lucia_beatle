@@ -3,11 +3,10 @@
 import { db } from "@/db";
 import bcrypt, { compareSync } from "bcrypt";
 import { redirect } from "next/navigation";
-import { generateIdFromEntropySize } from "lucia";
 import { userTable } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { validateRequest } from "@/lib/validate-request";
-import { createSession, generateSessionToken, invalidateSession } from "@/lib/auth";
+import { createSession, generateSessionToken, invalidateSession, generateIdFromEntropySize } from "@/lib/auth";
 import { deleteSessionTokenCookie, setSessionTokenCookie } from "@/lib/cookies";
 
 
