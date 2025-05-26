@@ -4,7 +4,7 @@ import { eq } from "drizzle-orm";
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from "@oslojs/encoding";
 import { sha256 } from "@oslojs/crypto/sha2";
 
-import type { DatabaseUser, Session } from "@/db";
+import type { User, Session } from "@/db";
 
 
 export function generateIdFromEntropySize(size: number): string {
@@ -63,5 +63,5 @@ export async function invalidateSession(sessionId: string): Promise<void> {
 }
 
 export type SessionValidationResult =
-	| { session: Session; user: DatabaseUser }
+	| { session: Session; user: User }
 	| { session: null; user: null };
