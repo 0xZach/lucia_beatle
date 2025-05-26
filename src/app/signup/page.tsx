@@ -14,8 +14,8 @@ const SignupPage = () => {
         <RootLayout>
             <h1>Create an account</h1>
             <form action={formAction}>
-                <label htmlFor="username">Username</label>
-                <input name="username" id="username" />
+                <label htmlFor="email">email</label>
+                <input name="email" id="email" />
                 <br />
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" id="password" />
@@ -25,6 +25,7 @@ const SignupPage = () => {
                     <p>{formState.error}</p>
                 }
             </form>
+            <a href='/login'>Go back to the login page</a>
         </RootLayout>
     );
 }

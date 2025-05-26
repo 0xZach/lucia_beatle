@@ -13,7 +13,7 @@ async function Page() {
   return (
     <RootLayout>
       <h1>Home</h1>
-      {user && <p>Hello {user.username}!</p>}
+      {user && <p>Welcome to your profile!</p>}
 
       {user &&
         <form action={logout}>
