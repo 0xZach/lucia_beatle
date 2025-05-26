@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import { cache } from "react";
 
 import type { Session, DatabaseUser } from "@/db";
-import { validateSessionToken } from "./luciaLess";
+import { validateSessionToken } from "./auth";
 import { deleteSessionTokenCookie, setSessionTokenCookie } from "./cookies";
 
 
