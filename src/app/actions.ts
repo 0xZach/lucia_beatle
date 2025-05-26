@@ -18,7 +18,7 @@ export async function signup(currentState: { error: string }, formData: FormData
     if (
         typeof email !== "string" ||
         email.length < 5 ||
-        email.length > 31 ||
+        email.length > 255 ||
         !isValidEmail(email)
     ) {
         return {
