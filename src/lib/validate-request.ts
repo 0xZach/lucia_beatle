@@ -1,13 +1,13 @@
 import { cookies } from "next/headers";
 import { cache } from "react";
 
-import type { Session, DatabaseUser } from "@/db";
+import type { Session, User } from "@/db";
 import { validateSessionToken } from "./auth";
 import { deleteSessionTokenCookie, setSessionTokenCookie } from "./cookies";
 
 
 export const validateRequest = cache(
-    async (): Promise<{ user: DatabaseUser; session: Session } | { user: null; session: null }> => {
+    async (): Promise<{ user: User; session: Session } | { user: null; session: null }> => {
         const cookieStore = await cookies();
         const sessionId = cookieStore.get("auth_session")?.value ?? null;
         if (!sessionId) {
